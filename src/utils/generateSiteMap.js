@@ -9,9 +9,9 @@ const staticRoutes = [
   "/",
   "/bio",
   "/contact",
-  "/calendar",
   "/works",
-  "/projects",
+  // "/calendar",
+  // "/projects",
 ];
 
 // Assuming you have a function to fetch dynamic slugs for posts, projects, etc.

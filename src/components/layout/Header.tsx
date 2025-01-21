@@ -1,11 +1,9 @@
 import { useContext, useEffect, useRef } from "react";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
 import { GeneralContext } from "../../contexts/GeneralContext";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import useIsMobile from "../../hooks/useIsMobile";
+import { Col, ListGroup, ListGroupItem, Row } from "react-bootstrap";
 
 export default function Header({
   setHeaderHeight,
@@ -13,7 +11,9 @@ export default function Header({
   setHeaderHeight: React.Dispatch<React.SetStateAction<number>>;
 }) {
   const { preferences } = useContext(GeneralContext);
-  const artists_name = preferences ? preferences.artists_name : "";
+  const artists_name = preferences
+    ? preferences.artists_name
+    : "Rita Borralho Silva";
   const headerRef = useRef<HTMLDivElement | null>(null);
   const isMobile = useIsMobile();
 
@@ -26,12 +26,10 @@ export default function Header({
   }, [setHeaderHeight, isMobile]);
 
   return (
-    <header
-      className="container-fluid position-absolute top-0 start-0"
-      ref={headerRef}
-    >
+    <header ref={headerRef}>
+      {/* metadata */}
       <Helmet>
-        <title>{preferences?.artists_name}</title>
+        <title>{preferences?.artists_name || "Rita  Borralho Silva"}</title>
         <meta name="author" content={preferences?.artists_name} />
 
         {/* Favicons and Icons for Different Platforms */}
@@ -69,23 +67,36 @@ export default function Header({
         {/* Optional: Web App Manifest for Android */}
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </Helmet>
-      <Navbar expand="lg">
-        <Container>
-          <Link to="/">
-            <Navbar.Brand>{artists_name}</Navbar.Brand>
-          </Link>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto gap-2">
-              <Link to="bio">Bio</Link>
-              <Link to="posts">Posts</Link>
-              <Link to="projects">Projects</Link>
-              <Link to="works">Works</Link>
-              <Link to="contact">Contact</Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      {/* navbar */}
+      <div className="m-3 position-fixed start-0 top-0 z-3">
+        <Row>
+          <Col>
+            <span
+              className="fs-3 fw-bolder text-wrap d-block"
+              style={{ width: 100, lineHeight: 1 }}
+            >
+              {artists_name}
+            </span>
+          </Col>
+        </Row>
+      </div>
+
+      <div className="position-fixed end-0 top-50 translate-middle-y m-2">
+        <ListGroup>
+          <ListGroupItem>
+            <Link to="/">Home</Link>
+          </ListGroupItem>
+          <ListGroupItem>
+            <Link to="bio">Bio</Link>
+          </ListGroupItem>
+          <ListGroupItem>
+            <Link to="works">Works</Link>
+          </ListGroupItem>
+          <ListGroupItem>
+            <Link to="contact">Contact</Link>
+          </ListGroupItem>
+        </ListGroup>
+      </div>
     </header>
   );
 }

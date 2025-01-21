@@ -23,10 +23,7 @@ export default function Footer({
   }, [setFooterHeight, isMobile]);
 
   return (
-    <footer
-      className="position-absolute bottom-0 start-0 container-fluid mt-4"
-      ref={footerRef}
-    >
+    <footer className="container-fluid" ref={footerRef}>
       <Col>
         <Row>
           <Col className="d-flex align-items-center justify-content-center">
@@ -40,7 +37,7 @@ export default function Footer({
           </Col>
         </Row>
         <Row>
-          <Col className="d-flex align-items-end justify-content-end">
+          <Col className="d-flex align-items-center justify-content-center">
             <small>
               © {currentYear} {artists_name}
             </small>

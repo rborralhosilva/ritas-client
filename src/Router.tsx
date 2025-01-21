@@ -3,10 +3,8 @@ import Homepage from "./pages/single/Home";
 import Bio from "./pages/single/Bio";
 import Contact from "./pages/single/Contact";
 import Works from "./pages/Works";
-import Projects from "./pages/Projects";
 import Post from "./pages/single/Post";
 import Work from "./pages/single/Work";
-import Project from "./pages/single/Project";
 import Posts from "./pages/Posts";
 import NotFoundPage from "./pages/404";
 import { fetchData } from "./utils/loader";
@@ -59,7 +57,7 @@ export default function Router() {
       </Route>
 
       {/* Projects Routes */}
-      <Route
+      {/* <Route
         path="projects"
         element={<Projects />}
         loader={() => fetchData("projects")}
@@ -69,7 +67,7 @@ export default function Router() {
           element={<Project />}
           loader={({ params }) => fetchData(`projects/${params.slug}`)}
         />
-      </Route>
+      </Route> */}
 
       {/* Catch-All for Not Found */}
       <Route path="*" element={<NotFoundPage />} />
