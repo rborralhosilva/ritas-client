@@ -6,7 +6,7 @@ import {
 import dayjs from "dayjs";
 import { Project } from "../../types/Project";
 
-export type MediaRef = ImageRefSchema | VideoRefSchema | null;
+export type MediaRef = ImageRefSchema | VideoRefSchema | ThreedRef | null;
 
 function isVideo(media: MediaRef | null): media is VideoRefSchema {
   return media?.mediaType === "VIDEO";

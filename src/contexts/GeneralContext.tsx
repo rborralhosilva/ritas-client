@@ -1,14 +1,9 @@
-import {
-  ImageRefSchema,
-  PreferencesSchema,
-  UrlSchema,
-  VideoRefSchema,
-} from "@jakubkanna/labguy-front-schema";
+import { PreferencesSchema, UrlSchema } from "@jakubkanna/labguy-front-schema";
 import { createContext } from "react";
+import { MediaRef } from "../utils/helpers";
 
 export interface Preferences extends PreferencesSchema {
-  homepage_background_image?: ImageRefSchema[];
-  homepage_background_video?: VideoRefSchema[];
+  homepage_media: MediaRef;
   homepage_urls: UrlSchema[];
 }
 

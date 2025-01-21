@@ -3,6 +3,7 @@ import { Col } from "react-bootstrap";
 import Layout from "../../components/layout/Layout";
 import { GeneralContext } from "../../contexts/GeneralContext";
 import Section from "../../components/sections/Section";
+import HomeSecContent from "../../components/sections/Home.section";
 
 export default function Homepage() {
   const { preferences } = useContext(GeneralContext);
@@ -19,7 +20,9 @@ export default function Homepage() {
   return (
     <Layout>
       <Col>
-        <Section id="home"></Section>
+        <Section id="home">
+          <HomeSecContent />
+        </Section>
         <Section id="works"></Section>
         <Section id="bio"></Section>
         <Section id="contact"></Section>
