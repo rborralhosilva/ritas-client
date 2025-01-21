@@ -23,9 +23,24 @@ export default function Homepage() {
         <Section id="home">
           <HomeSecContent />
         </Section>
-        <Section id="works"></Section>
-        <Section id="bio"></Section>
-        <Section id="contact"></Section>
+        <Section id="works">
+          <Section.Layout
+            title="Works"
+            body={<p>This is the body content of the section.</p>}
+          />
+        </Section>
+        <Section id="bio">
+          <Section.Layout
+            title="Bio"
+            body={<p>This is the body content of the section.</p>}
+          />
+        </Section>
+        <Section id="contact">
+          <Section.Layout
+            title="Contact"
+            body={<p>This is the body content of the section.</p>}
+          />
+        </Section>
       </Col>
     </Layout>
   );
