@@ -9,6 +9,7 @@ export default function Main({
   footerHeight: number;
   headerHeight: number;
 }) {
+  // Ensure that refs are passed correctly when rendering Home
   return (
     <main
       className={`container-fluid d-flex flex-column`}

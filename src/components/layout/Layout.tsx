@@ -48,7 +48,7 @@ export default function Layout({
       )}
 
       {/* Body */}
-      <Row className=" flex-grow-1">
+      <Row className="p-2 flex-grow-1">
         <Col xs={12}>
           <Row id="SinglePageContent" className="row flex-grow-1">
             {children}

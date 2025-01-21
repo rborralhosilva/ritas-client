@@ -1,9 +1,9 @@
 import { useContext, useEffect, useRef } from "react";
 import { GeneralContext } from "../../contexts/GeneralContext";
 import { Helmet } from "react-helmet";
-import { Link } from "react-router-dom";
 import useIsMobile from "../../hooks/useIsMobile";
-import { Col, ListGroup, ListGroupItem, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
+import Menu from "./Menu";
 
 export default function Header({
   setHeaderHeight,
@@ -81,22 +81,7 @@ export default function Header({
         </Row>
       </div>
 
-      <div className="position-fixed end-0 top-50 translate-middle-y m-2">
-        <ListGroup>
-          <ListGroupItem>
-            <Link to="/">Home</Link>
-          </ListGroupItem>
-          <ListGroupItem>
-            <Link to="bio">Bio</Link>
-          </ListGroupItem>
-          <ListGroupItem>
-            <Link to="works">Works</Link>
-          </ListGroupItem>
-          <ListGroupItem>
-            <Link to="contact">Contact</Link>
-          </ListGroupItem>
-        </ListGroup>
-      </div>
+      <Menu />
     </header>
   );
 }

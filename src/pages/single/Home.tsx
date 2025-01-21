@@ -1,16 +1,8 @@
 import { useContext } from "react";
-import { GeneralContext } from "../../contexts/GeneralContext";
-import Layout from "../../components/layout/Layout";
 import { Col } from "react-bootstrap";
-import HomeSection from "../../components/sections/Home.section";
-import BioSection from "../../components/sections/Bio.section";
-import ContactSection from "../../components/sections/Contact.section";
-import WorksSection from "../../components/sections/Works.section";
-// import { Col, ListGroup, Row } from "react-bootstrap";
-// import { UrlSchema } from "@jakubkanna/labguy-front-schema";
-// import { Link } from "react-router-dom";
-// import Background from "../../components/Background";
-// import Layout from "../../components/layout/Layout";
+import Layout from "../../components/layout/Layout";
+import { GeneralContext } from "../../contexts/GeneralContext";
+import Section from "../../components/sections/Section";
 
 export default function Homepage() {
   const { preferences } = useContext(GeneralContext);
@@ -27,10 +19,10 @@ export default function Homepage() {
   return (
     <Layout>
       <Col>
-        <HomeSection />
-        <WorksSection />
-        <BioSection />
-        <ContactSection />
+        <Section id="home"></Section>
+        <Section id="works"></Section>
+        <Section id="bio"></Section>
+        <Section id="contact"></Section>
       </Col>
     </Layout>
   );
