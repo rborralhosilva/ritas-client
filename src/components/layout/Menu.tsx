@@ -51,11 +51,11 @@ export default function Menu() {
         <ListGroupItem active={activeSection === "home"}>
           <Link to="/">Home</Link>
         </ListGroupItem>
-        <ListGroupItem active={activeSection === "works"}>
-          <Link to="works">Works</Link>
-        </ListGroupItem>
         <ListGroupItem active={activeSection === "bio"}>
           <Link to="bio">Bio</Link>
+        </ListGroupItem>
+        <ListGroupItem active={activeSection === "works"}>
+          <Link to="works">Works</Link>
         </ListGroupItem>
         <ListGroupItem active={activeSection === "contact"}>
           <Link to="contact">Contact</Link>
