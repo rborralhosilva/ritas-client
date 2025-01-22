@@ -37,14 +37,19 @@ const Thumbnail: React.FC<ThumbnailProps> = ({ media }) => {
   const threed = is3d(media[0]) && media[0];
 
   return (
-    <div className="img-fluid rounded" style={{ height: "100%" }}>
-      {image && <Image imageref={image} />}
+    <div className="rounded h-100 w-100">
+      {image && (
+        <Image
+          imageref={image}
+          className="rounded object-fit-cover w-100 h-100"
+        />
+      )}
       {video && <Video videoref={video} playerProps={{ light: true }} />}
       {threed &&
         (threed.poster ? (
           <Image
             imageref={threed.poster as ImageRefSchema}
-            className="img-fluid"
+            className="rounded object-fit-cover w-100 h-100"
           />
         ) : (
           <Model threedref={threed} />

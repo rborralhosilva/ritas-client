@@ -5,6 +5,8 @@ import { GeneralContext } from "../../contexts/GeneralContext";
 import Section from "../../components/sections/Section";
 import HomeSecContent from "../../components/sections/Home.section";
 import WorksSecContent from "../../components/sections/Works.section";
+import { Link } from "react-router-dom";
+import { ArrowUpRight } from "react-bootstrap-icons";
 
 export default function Homepage() {
   const { preferences } = useContext(GeneralContext);
@@ -25,7 +27,15 @@ export default function Homepage() {
           <HomeSecContent />
         </Section>
         <Section id="works">
-          <Section.Layout title="Works" body={<WorksSecContent />} />
+          <Section.Layout
+            title="Works"
+            subtitle={
+              <Link to={"/workss"}>
+                View full selection <ArrowUpRight />
+              </Link>
+            }
+            body={<WorksSecContent />}
+          />
         </Section>
         <Section id="bio">
           <Section.Layout

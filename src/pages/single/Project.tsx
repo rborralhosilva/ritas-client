@@ -1,6 +1,6 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
-import WorkCard from "../../components/WorkCard";
+import WorkCard from "../../contexts/WorkCard";
 import HTMLReactParser from "html-react-parser/lib/index";
 import MediaComponent from "../../components/Media";
 import { parseDate } from "../../utils/helpers";

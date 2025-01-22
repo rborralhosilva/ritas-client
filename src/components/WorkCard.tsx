@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { Work } from "../../types/Work";
-import Thumbnail from "./Thumbnail"; // Import the Thumbnail component
+import Thumbnail from "../components/Thumbnail"; // Import the Thumbnail component
 import { getRitasColor } from "../utils/helpers";
 import { Link } from "react-router-dom";
+import { ArrowUpRight } from "react-bootstrap-icons";
 
 interface CardProps {
   work: Work;
@@ -38,7 +39,10 @@ const WorkCard: React.FC<CardProps> = ({ work }) => {
           }}
         >
           <Link to={`/works/${work.id}`}>
-            <p>show</p>
+            <p className="p-2">
+              View
+              <ArrowUpRight />
+            </p>
           </Link>
         </div>
       )}

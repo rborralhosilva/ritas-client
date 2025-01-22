@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import { Work } from "../../../types/Work";
 import { useFetchData } from "../../hooks/useFetch";
-import WorkCard from "../WorkCard";
 import { useDraggable } from "react-use-draggable-scroll";
+import WorkCard from "../WorkCard";
 
 export default function WorksSecContent() {
   const { data } = useFetchData<Work[]>("works?unique=true");

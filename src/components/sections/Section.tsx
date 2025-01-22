@@ -14,14 +14,19 @@ interface SectionLayoutProps {
   title: string;
   body: React.ReactNode;
   footer?: React.ReactNode;
+  subtitle?: React.ReactNode;
 }
 
-function Layout({ title, body, footer }: SectionLayoutProps) {
+function Layout({ title, subtitle, body, footer }: SectionLayoutProps) {
   return (
-    <Container className="d-flex flex-column py-5" style={{ height: "100%" }}>
+    <Container
+      className="d-flex flex-column py-5 gap-3"
+      style={{ height: "100%" }}
+    >
       <Row>
-        <Col className="d-flex justify-content-center text-center">
+        <Col className="d-flex flex-column justify-content-center text-center">
           <h1 className="display-1">{title}</h1>
+          {subtitle}
         </Col>
       </Row>
       <Row className="flex-grow-1 ">
