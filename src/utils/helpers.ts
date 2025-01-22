@@ -77,10 +77,33 @@ function parseDate(dateObj: { [k: string]: unknown } | null | undefined) {
 const isLastItem = (index: number, arrayLength: number) =>
   index === arrayLength - 1;
 
+let usedColors: string[] = [];
+
 const getRitasColor = () => {
   const colors = ["#6D9AF1", "#7FD9E0", "#7F7EB0", "#DCDAE6", "#CBD0BC"];
-  const randomIndex = Math.floor(Math.random() * colors.length);
-  return colors[randomIndex];
+
+  // Filter out the last 5 used colors
+  const availableColors = colors.filter((color) => !usedColors.includes(color));
+
+  // If no colors are available, reset the usedColors and allow all colors to be used again
+  if (availableColors.length === 0) {
+    usedColors = []; // Reset the used colors
+    availableColors.push(...colors); // Reintroduce all colors back to availableColors
+  }
+
+  // Pick a random color from the available options
+  const randomIndex = Math.floor(Math.random() * availableColors.length);
+  const selectedColor = availableColors[randomIndex];
+
+  // Add the selected color to the usedColors array
+  usedColors.push(selectedColor);
+
+  // Keep only the last 5 used colors
+  if (usedColors.length > 5) {
+    usedColors.shift(); // Remove the oldest used color
+  }
+
+  return selectedColor;
 };
 
 export {

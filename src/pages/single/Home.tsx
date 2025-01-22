@@ -4,6 +4,7 @@ import Layout from "../../components/layout/Layout";
 import { GeneralContext } from "../../contexts/GeneralContext";
 import Section from "../../components/sections/Section";
 import HomeSecContent from "../../components/sections/Home.section";
+import WorksSecContent from "../../components/sections/Works.section";
 
 export default function Homepage() {
   const { preferences } = useContext(GeneralContext);
@@ -24,10 +25,7 @@ export default function Homepage() {
           <HomeSecContent />
         </Section>
         <Section id="works">
-          <Section.Layout
-            title="Works"
-            body={<p>This is the body content of the section.</p>}
-          />
+          <Section.Layout title="Works" body={<WorksSecContent />} />
         </Section>
         <Section id="bio">
           <Section.Layout

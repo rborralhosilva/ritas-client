@@ -20,12 +20,14 @@ function Layout({ title, body, footer }: SectionLayoutProps) {
   return (
     <Container className="d-flex flex-column py-5" style={{ height: "100%" }}>
       <Row>
-        <Col>
-          <h1 className="text-center display-1">{title}</h1>
+        <Col className="d-flex justify-content-center text-center">
+          <h1 className="display-1">{title}</h1>
         </Col>
       </Row>
-      <Row className="flex-grow-1">
-        <Col className="h-100">{body}</Col>
+      <Row className="flex-grow-1 ">
+        <Col className="h-100 d-flex justify-content-center align-items-center">
+          {body}
+        </Col>
       </Row>
       {footer && (
         <Row>
