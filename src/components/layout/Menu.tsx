@@ -47,7 +47,7 @@ export default function Menu() {
 
   return (
     <div className="position-fixed end-0 top-50 translate-middle-y m-2">
-      <ListGroup>
+      <ListGroup variant="rita">
         <ListGroupItem active={activeSection === "home"}>
           <Link to="/">Home</Link>
         </ListGroupItem>
