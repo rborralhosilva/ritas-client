@@ -7,6 +7,7 @@ import HomeSecContent from "../../components/sections/Home.section";
 import WorksSecContent from "../../components/sections/Works.section";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "react-bootstrap-icons";
+import ContactSec from "../../components/sections/Contact.section";
 
 export default function Homepage() {
   const { preferences } = useContext(GeneralContext);
@@ -44,10 +45,7 @@ export default function Homepage() {
           />
         </Section>
         <Section id="contact">
-          <Section.Layout
-            title="Contact"
-            body={<p>This is the body content of the section.</p>}
-          />
+          <Section.Layout title="Contact" body={<ContactSec />} />
         </Section>
       </Col>
     </Layout>

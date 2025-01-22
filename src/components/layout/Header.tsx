@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import useIsMobile from "../../hooks/useIsMobile";
 import { Col, Row } from "react-bootstrap";
 import Menu from "./Menu";
+import { Link } from "react-router-dom";
 
 export default function Header({
   setHeaderHeight,
@@ -71,12 +72,13 @@ export default function Header({
       <div className="m-3 position-fixed start-0 top-0 z-3">
         <Row>
           <Col>
-            <span
+            <Link
+              to="/"
               className="fs-3 fw-bolder text-wrap d-block"
               style={{ width: 100, lineHeight: 1 }}
             >
               {artists_name}
-            </span>
+            </Link>
           </Col>
         </Row>
       </div>
