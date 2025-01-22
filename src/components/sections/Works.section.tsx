@@ -7,8 +7,7 @@ import WorkCard from "../WorkCard";
 export default function WorksSecContent() {
   const { data } = useFetchData<Work[]>("works?unique=true");
 
-  const limitedData = data?.slice(0, 10) || []; // Limit the data array to a length of 10
-
+  const limitedData = data?.slice(0, 10) || [];
   const ref =
     useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>;
   const { events } = useDraggable(ref);

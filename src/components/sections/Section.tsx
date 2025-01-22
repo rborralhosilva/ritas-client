@@ -20,7 +20,7 @@ interface SectionLayoutProps {
 function Layout({ title, subtitle, body, footer }: SectionLayoutProps) {
   return (
     <Container
-      className="d-flex flex-column py-5 gap-3"
+      className="d-flex flex-column py-5 gap-5"
       style={{ height: "100%" }}
     >
       <Row>
