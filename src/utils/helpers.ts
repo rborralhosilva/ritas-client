@@ -77,4 +77,19 @@ function parseDate(dateObj: { [k: string]: unknown } | null | undefined) {
 const isLastItem = (index: number, arrayLength: number) =>
   index === arrayLength - 1;
 
-export { isVideo, isImage, isUpcoming, isCurrent, parseDate, is3d, isLastItem };
+const getRitasColor = () => {
+  const colors = ["#6D9AF1", "#7FD9E0", "#7F7EB0", "#DCDAE6", "#CBD0BC"];
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
+};
+
+export {
+  isVideo,
+  isImage,
+  isUpcoming,
+  isCurrent,
+  parseDate,
+  is3d,
+  isLastItem,
+  getRitasColor,
+};
