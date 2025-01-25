@@ -1,12 +1,12 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
-import WorkCard from "../../contexts/WorkCard";
 import HTMLReactParser from "html-react-parser/lib/index";
 import MediaComponent from "../../components/Media";
 import { parseDate } from "../../utils/helpers";
 import Layout from "../../components/layout/Layout";
 import { useFetchData } from "../../hooks/useFetch";
 import { Project as ProjectSchema } from "../../../types/Project";
+import WorkCard from "../../components/WorkCard";
 
 export default function Project() {
   const { slug } = useParams();

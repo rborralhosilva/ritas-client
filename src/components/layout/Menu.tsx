@@ -46,7 +46,10 @@ export default function Menu() {
   }, [location.pathname]); // Dependency on location.pathname to set active section on route change
 
   return (
-    <div className="position-fixed end-0 top-50 translate-middle-y m-2">
+    <div
+      id="menu"
+      className="position-fixed end-0 top-50 translate-middle-y m-2 z-3"
+    >
       <ListGroup variant="rita">
         <ListGroupItem active={activeSection === "home"}>
           <Link to="/">Home</Link>
