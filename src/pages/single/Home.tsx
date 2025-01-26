@@ -20,7 +20,7 @@ export default function Homepage() {
       <Col>
         <Section id="home">
           <Alice />
-        </Section>{" "}
+        </Section>
         <div id="sections">
           <Section id="bio">
             <Section.Layout title="Bio" body={<BioSec />} />

@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { Work } from "../../types/Work";
 import Thumbnail from "../components/Thumbnail"; // Import the Thumbnail component
-import { getRitasColor } from "../utils/helpers";
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "react-bootstrap-icons";
+import styled, { keyframes } from "styled-components";
+import { getRitasColor } from "../utils/helpers";
 
 interface CardProps {
   work: Work;
@@ -16,35 +16,57 @@ const WorkCard: React.FC<CardProps> = ({ work }) => {
   const { title } = general;
   const [mouveOver, setMouseOver] = useState<boolean>(false);
 
+  const color = getRitasColor();
+
+  const pulseAnimation = keyframes`
+    0% {
+      background-size: 25px;
+    }
+    100% {
+      background-size: 50px;
+    }
+
+  `;
+
+  const Hover = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    background: repeating-radial-gradient(
+      ${color},
+      rgba(255, 255, 255, 0.75) 25px
+    );
+    background-size: 50px;
+    background-position: center;
+    animation: ${pulseAnimation} 2s ease-in-out;
+    transition: opacity 0.3s ease;
+    border-radius: 1rem;
+  `;
+
   return (
     <div
       className="rounded work-card flex-shrink-0 d-flex flex-column justify-content-between position-relative"
       style={{
         cursor: "pointer",
         width: "300px",
-        transition: "all 0.3s ease", // Optional transition effect
+        transition: "all 0.3s ease",
       }}
       onMouseOver={() => setMouseOver(true)}
       onMouseLeave={() => setMouseOver(false)}
     >
       {/* Overlay that appears on hover */}
       {mouveOver && (
-        <div
-          className="rounded top-0 start-0 h-100 w-100 overlay d-flex flex-column justify-content-center align-items-center"
-          style={{
-            position: "absolute",
-            backgroundColor: getRitasColor(),
-            transition: "opacity 0.3s ease", // Optional transition effect
-            zIndex: 1, // Ensure it's above content
-          }}
-        >
+        <Hover>
           <Link to={`/works/${work.id}`}>
-            <p className="p-2">
-              View
-              <ArrowUpRight />
-            </p>
+            <p className="pt-2 px-2">View</p>
           </Link>
-        </div>
+        </Hover>
       )}
 
       <Row className="gap-3 p-2 h-75">
