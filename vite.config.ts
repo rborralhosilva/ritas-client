@@ -3,6 +3,8 @@ import react from "@vitejs/plugin-react";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 
 export default defineConfig({
+  assetsInclude: ["**/*.gltf", "**/*.mp4"],
+
   plugins: [
     react(),
     viteStaticCopy({

@@ -14,7 +14,7 @@ export default function WorksSecContent() {
 
   return (
     <div
-      className="d-flex flex-nowrap w-100 h-100"
+      className="position-relative d-flex flex-nowrap w-100 h-100"
       {...events}
       ref={ref}
       style={{

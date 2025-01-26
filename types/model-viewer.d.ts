@@ -5,6 +5,12 @@ declare global {
   namespace JSX {
     interface IntrinsicElements {
       "model-viewer": ModelViewerElement;
+      "effect-composer": React.HTMLAttributes<HTMLElement>;
+      HTMLElement;
+      "outline-effect": React.HTMLAttributes<HTMLElement>;
+      HTMLElement;
+      "color-grade-effect": React.HTMLAttributes<HTMLElement>;
+      HTMLElement;
     }
   }
 }

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight } from "react-bootstrap-icons";
 import ContactSec from "../../components/sections/Contact.section";
 import BioSec from "../../components/sections/Bio.section";
-import { Alice } from "@jakubkanna/components";
+import { Alice } from "../../components/Alice/Alice";
 
 export default function Homepage() {
   const { preferences } = useContext(GeneralContext);

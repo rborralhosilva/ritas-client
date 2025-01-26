@@ -11,43 +11,42 @@ interface CardProps {
   onClick?: () => void;
 }
 
+const pulseAnimation = keyframes`
+  0% {
+    background-size: 25px;
+  }
+  100% {
+    background-size: 50px;
+  }
+
+`;
+
+const Hover = styled.div<{ color: string }>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  background: repeating-radial-gradient(
+    ${(props) => props.color},
+    rgba(255, 255, 255, 0.75) 25px
+  );
+  background-size: 50px;
+  background-position: center;
+  animation: ${pulseAnimation} 2s ease-in-out;
+  transition: opacity 0.3s ease;
+  border-radius: 1rem;
+`;
 const WorkCard: React.FC<CardProps> = ({ work }) => {
   const { general, dimensions, year, media, medium } = work;
   const { title } = general;
   const [mouveOver, setMouseOver] = useState<boolean>(false);
 
   const color = getRitasColor();
-
-  const pulseAnimation = keyframes`
-    0% {
-      background-size: 25px;
-    }
-    100% {
-      background-size: 50px;
-    }
-
-  `;
-
-  const Hover = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-    background: repeating-radial-gradient(
-      ${color},
-      rgba(255, 255, 255, 0.75) 25px
-    );
-    background-size: 50px;
-    background-position: center;
-    animation: ${pulseAnimation} 2s ease-in-out;
-    transition: opacity 0.3s ease;
-    border-radius: 1rem;
-  `;
 
   return (
     <div
@@ -62,7 +61,7 @@ const WorkCard: React.FC<CardProps> = ({ work }) => {
     >
       {/* Overlay that appears on hover */}
       {mouveOver && (
-        <Hover>
+        <Hover color={color}>
           <Link to={`/works/${work.id}`}>
             <p className="pt-2 px-2">View</p>
           </Link>
