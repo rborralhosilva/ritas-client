@@ -14,3 +14,14 @@ section {
 .z-4 {
   z-index: 4 !important;
 }
+
+.modal {
+  -webkit-backdrop-filter: blur(1rem);
+  backdrop-filter: blur(1rem);
+}
+.modal-content {
+  border: none;
+}
+.modal-backdrop {
+  background-color: white;
+}

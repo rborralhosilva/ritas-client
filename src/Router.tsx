@@ -26,7 +26,7 @@ export default function Router() {
 
       {/* Bio Route */}
       <Route
-        path="bio"
+        path="#bio"
         element={<Bio />}
         loader={() => fetchData("profile/1")}
       />

@@ -2,6 +2,7 @@ import { ProfileSchema } from "@jakubkanna/labguy-front-schema";
 import { useFetchData } from "../../hooks/useFetch";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "react-bootstrap-icons";
+import SectionModal from "../SectionModal";
 
 export default function BioSec() {
   const { data } = useFetchData<ProfileSchema>("profile/1");
@@ -26,11 +27,14 @@ export default function BioSec() {
       ? `${textStatement.slice(0, maxLength)}...`
       : textStatement;
 
+  //
+
   return (
     <div>
+      <SectionModal />
       <div id="Statement" className="text-center fs-2">
         <p>{truncatedStatement}</p>
-        <Link to={"/bio"} className="fs-4 mt-5">
+        <Link to={"#bio"} className="fs-4 mt-5">
           Read more <ArrowUpRight />
         </Link>
       </div>

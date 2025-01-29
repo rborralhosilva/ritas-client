@@ -9,7 +9,7 @@ import React from "react";
 
 createRoot(document.getElementById("root")!).render(
   <GeneralProvider>
-    {/* Using BrowserRouter because of newer react-rouer compatibility issues with Framer Motion */}
+    {/* Using Rouer this way because of newer react-rouer compatibility issues with Framer Motion */}
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <React.StrictMode>
         <App>

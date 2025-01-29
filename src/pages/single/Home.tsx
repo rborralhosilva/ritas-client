@@ -29,7 +29,7 @@ export default function Homepage() {
             <Section.Layout
               title="Works"
               subtitle={
-                <Link to={"/workss"}>
+                <Link to={"#works"}>
                   View full selection <ArrowUpRight />
                 </Link>
               }
