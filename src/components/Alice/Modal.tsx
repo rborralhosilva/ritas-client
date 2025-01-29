@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import ReactPlayer from "react-player/lazy";
 import styled, { keyframes } from "styled-components";
@@ -9,10 +10,12 @@ export default function VideoWindow({
   show: boolean;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
-  if (!show) return null;
+  const [ready, setReady] = useState(false);
+  if (!show) return;
 
   const handleClose = () => {
     setShow(false);
+    setReady(false);
   };
 
   return (
@@ -37,7 +40,16 @@ export default function VideoWindow({
         </Button>
 
         <Modal.Body>
-          <ReactPlayer url={"https://vimeo.com/75845109"} controls />
+          {!ready && (
+            <p className="position-absolute top-50 start-50 translate-middle text-light">
+              Loading...
+            </p>
+          )}
+          <ReactPlayer
+            url={"https://vimeo.com/75845109"}
+            controls
+            onReady={() => setReady(true)}
+          />
         </Modal.Body>
       </Modal>
 
@@ -60,8 +72,8 @@ const CircleBackDrop = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 200vw;
-  height: 200vh;
+  width: 300dvw;
+  height: 300dvh;
   overflow: hidden;
 
   background-image: radial-gradient(circle, black 50%, transparent 50%);
