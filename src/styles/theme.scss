@@ -3,6 +3,7 @@
 
 $dark: #1e2724;
 $light: #d2efe8;
+$rita: blue;
 
 html,
 body {
@@ -17,7 +18,7 @@ body {
 }
 
 a {
-  color: rgb(119, 0, 255);
+  color: $rita;
   text-decoration: none;
   &:hover {
     color: darkblue;

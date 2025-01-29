@@ -1,6 +1,6 @@
 import "@google/model-viewer";
 import "@google/model-viewer-effects";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ModelViewerElement } from "@google/model-viewer";
 import onLoad from "./src/onLoad";
 import onScroll from "./src/onScroll";
@@ -12,13 +12,11 @@ import poster from "/alice/alice_10.jpg";
 import arPrompt from "/alice/ar_hand_prompt.png";
 import "./src/styles.css";
 import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
+import VideoWindow from "./Modal";
 
-export const Alice = ({
-  onClick = () => alert("click"),
-}: {
-  onClick?: () => void;
-}) => {
+export const Alice = () => {
   const aliceRef = useRef(null);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     const modelViewer = document.getElementById("alice") as ModelViewerElement;
@@ -29,8 +27,12 @@ export const Alice = ({
 
   const tooltip = <Tooltip id="tooltip">Play video</Tooltip>;
 
+  const onClick = () => {
+    setShow(true);
+  };
+
   return (
-    <div id="model" ref={aliceRef}>
+    <div id="model" ref={aliceRef} className={show ? "z-4" : "z-0"}>
       <model-viewer
         src={model}
         ar
@@ -52,11 +54,18 @@ export const Alice = ({
             data-surface="1 0 56 41 64 0.492 0.425 0.083"
             data-visibility-attribute="visible"
             onClick={onClick}
+            hidden={show}
           ></Button>
         </OverlayTrigger>
+        <div
+          className="Hotspot"
+          slot="hotspot-2"
+          data-surface="1 0 56 41 64 0.492 0.425 0.083"
+        >
+          <VideoWindow show={show} setShow={setShow} />
+        </div>
 
         <effect-composer render-mode="quality">
-          <outline-effect color="cyan"></outline-effect>
           <color-grade-effect blend-mode="darken"></color-grade-effect>
         </effect-composer>
 

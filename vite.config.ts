@@ -1,10 +1,10 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { viteStaticCopy } from "vite-plugin-static-copy";
+// import { visualizer } from "rollup-plugin-visualizer";
 
 export default defineConfig({
-  assetsInclude: ["**/*.gltf", "**/*.mp4"],
-
+  assetsInclude: ["**/*.gltf"],
   plugins: [
     react(),
     viteStaticCopy({
@@ -16,5 +16,19 @@ export default defineConfig({
         },
       ],
     }),
+    // visualizer({
+    //   filename: "./dist/stats.html",
+    //   // open: true, // Automatically opens the stats in the browser
+    // }),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          three: ["three"],
+          "model-viewer": ["@google/model-viewer"],
+        },
+      },
+    },
+  },
 });
