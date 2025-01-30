@@ -3,6 +3,7 @@ import { Work } from "../../../types/Work";
 import { useFetchData } from "../../hooks/useFetch";
 import { useDraggable } from "react-use-draggable-scroll";
 import WorkCard from "../WorkCard";
+import Works from "../../pages/Works";
 import SectionModal from "../SectionModal";
 
 export default function WorksSecContent() {
@@ -25,10 +26,13 @@ export default function WorksSecContent() {
         userSelect: "none",
       }}
     >
-      <SectionModal />
-      {limitedData.map((work) => (
-        <WorkCard key={work.id} work={work} />
-      ))}
+      <SectionModal path="#works">
+        <Works data={data} />
+      </SectionModal>
+      {limitedData.map(
+        (work) =>
+          work.general.published && <WorkCard key={work.id} work={work} />
+      )}
     </div>
   );
 }

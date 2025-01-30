@@ -1,5 +1,5 @@
 import { ReactNode, useContext } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Col, Fade, Row } from "react-bootstrap";
 import { GeneralContext } from "../../contexts/GeneralContext";
 import { Helmet } from "react-helmet";
 
@@ -35,33 +35,36 @@ export default function Layout({
         <meta name="description" content={metadata.description} />
         <meta name="author" content={metadata.name} />
       </Helmet>
+      <Fade>
+        <>
+          {/* Header */}
+          {title && (
+            <Row
+              id="SinglePageHeader"
+              className="py-4 z-1  d-flex justify-content-center text-center"
+              style={{ marginBottom: "-1px" }}
+            >
+              {header || <h1 className="display-1 fw-normal mb-0">{title}</h1>}
+            </Row>
+          )}
 
-      {/* Header */}
-      {title && (
-        <Row
-          id="SinglePageHeader"
-          className="py-4 z-1"
-          style={{ marginBottom: "-1px" }}
-        >
-          {header || <h1 className="display-1 fw-normal mb-0">{title}</h1>}
-        </Row>
-      )}
-
-      {/* Body */}
-      <Row className="p-2 flex-grow-1">
-        <Col xs={12}>
-          <Row id="SinglePageContent" className="row flex-grow-1">
-            {children}
+          {/* Body */}
+          <Row className="p-2 flex-grow-1">
+            <Col xs={12}>
+              <Row id="SinglePageContent" className="row flex-grow-1">
+                {children}
+              </Row>
+            </Col>
           </Row>
-        </Col>
-      </Row>
 
-      {/* Footer */}
-      {footer && (
-        <Col xs={12} id="SinglePageFooter">
-          <Row>{footer}</Row>
-        </Col>
-      )}
+          {/* Footer */}
+          {footer && (
+            <Col xs={12} id="SinglePageFooter">
+              <Row>{footer}</Row>
+            </Col>
+          )}
+        </>
+      </Fade>
     </>
   );
 }

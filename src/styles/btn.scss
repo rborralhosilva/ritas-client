@@ -13,6 +13,13 @@
     color: white;
   }
 }
+.btn-rita-dark {
+  color: black;
+  &:hover {
+    background-color: darkblue;
+    color: white;
+  }
+}
 #Hotspot {
   background-color: transparent;
 }

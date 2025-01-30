@@ -1,39 +1,49 @@
-import { Modal } from "react-bootstrap";
-import Bio from "../pages/single/Bio";
-import Works from "../pages/Works";
+import { Button, Modal } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-export default function SectionModal() {
+export default function SectionModal({
+  children,
+  path,
+}: {
+  children: React.ReactNode;
+  path: string;
+}) {
   const location = useLocation();
   const navigate = useNavigate();
-  const [path, setPath] = useState<string | null>(location.hash);
+  const [hash, setHash] = useState<string | null>(null);
 
   useEffect(() => {
-    setPath(location.hash); // Update path when location.hash changes
-  }, [location.hash]);
-
-  if (!path) return;
-
-  const getModalContent = (path: string) => {
-    switch (path) {
-      case "#bio":
-        return <Bio />;
-      case "#works":
-        return <Works />;
-      default:
-        return null;
+    if (location.hash === path) {
+      setHash(location.hash);
+    } else {
+      setHash(null);
     }
+  }, [location.hash, path]);
+
+  const handleClose = () => {
+    navigate("/");
   };
 
   return (
-    <Modal
-      show={!!path}
-      size="xl"
-      onHide={() => navigate("/")}
-      contentClassName="shadow-sm"
-    >
-      <Modal.Body>{getModalContent(path)}</Modal.Body>
-    </Modal>
+    <>
+      <Modal
+        show={!!hash}
+        size="xl"
+        onHide={handleClose}
+        contentClassName="shadow-sm"
+      >
+        <Button
+          className="position-absolute top-0 end-0 z-3 m-3 px-1 py-0 "
+          aria-label="Close"
+          onClick={handleClose}
+          variant="rita-dark"
+          hidden={!hash}
+        >
+          <i className="bi bi-x fs-1 p-0 lh-sm" />
+        </Button>
+        <Modal.Body>{children}</Modal.Body>
+      </Modal>
+    </>
   );
 }

@@ -41,9 +41,10 @@ const Hover = styled.div<{ color: string }>`
   transition: opacity 0.3s ease;
   border-radius: 1rem;
 `;
+
 const WorkCard: React.FC<CardProps> = ({ work }) => {
   const { general, dimensions, year, media, medium } = work;
-  const { title } = general;
+  const { title, slug } = general;
   const [mouveOver, setMouseOver] = useState<boolean>(false);
 
   const color = getRitasColor();
@@ -62,7 +63,7 @@ const WorkCard: React.FC<CardProps> = ({ work }) => {
       {/* Overlay that appears on hover */}
       {mouveOver && (
         <Hover color={color}>
-          <Link to={`/works/${work.id}`}>
+          <Link to={`${slug}`}>
             <p className="pt-2 px-2">View</p>
           </Link>
         </Hover>

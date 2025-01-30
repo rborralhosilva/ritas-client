@@ -17,50 +17,52 @@ export default function Work() {
 
   return (
     <Layout title={general.title}>
-      <Container className="d-flex flex-column gap-4 mh-100 overflow-auto">
-        {/* Display Dimensions and Year */}
-        <Row>
-          <Col xs={12}>
-            <p id="Details">
-              {dimensions && <span>{dimensions} (cm), </span>}
-              {medium && <span>{medium}, </span>}
-              {year && <span>{year}</span>}
-              {urls && (
-                <>
-                  <br />
-                  <span>Links: </span>
+      <Col>
+        <Container className="d-flex flex-column gap-4 mh-100 overflow-auto">
+          {/* Display Dimensions and Year */}
+          <Row>
+            <Col xs={12}>
+              <p id="Details">
+                {dimensions && <span>{dimensions} (cm), </span>}
+                {medium && <span>{medium}, </span>}
+                {year && <span>{year}</span>}
+                {urls && (
+                  <>
+                    <br />
+                    <span>Links: </span>
 
-                  {urls.map((url, index) => (
-                    <>
-                      <a href={url.url}>{url.title}</a>
-                      {index < urls.length - 1 && <span>, </span>}
-                    </>
-                  ))}
-                </>
-              )}
-            </p>
-          </Col>
-        </Row>
-        {/* Display Images */}
-        <Row className="gap-3">
-          {media && media.length > 0 ? (
-            media.map((item) => (
-              <Col xs={12} key={item?.etag}>
-                <MediaComponent media={item} />
-              </Col>
-            ))
-          ) : (
-            <p>No media available for this project.</p>
-          )}
-        </Row>
-        {/* Footer Section */}
-        <Row>
-          <Col>
-            <span>Related: </span>
-            <Link to={"/works"}>All Works</Link>
-          </Col>
-        </Row>
-      </Container>
+                    {urls.map((url, index) => (
+                      <>
+                        <a href={url.url}>{url.title}</a>
+                        {index < urls.length - 1 && <span>, </span>}
+                      </>
+                    ))}
+                  </>
+                )}
+              </p>
+            </Col>
+          </Row>
+          {/* Display Images */}
+          <Row className="gap-3">
+            {media && media.length > 0 ? (
+              media.map((item) => (
+                <Col xs={12} key={item?.etag}>
+                  <MediaComponent media={item} />
+                </Col>
+              ))
+            ) : (
+              <p>No media available for this project.</p>
+            )}
+          </Row>
+          {/* Footer Section */}
+          <Row>
+            <Col>
+              <span>Related: </span>
+              <Link to={"/works"}>All Works</Link>
+            </Col>
+          </Row>
+        </Container>
+      </Col>
     </Layout>
   );
 }

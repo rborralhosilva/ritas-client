@@ -1,13 +1,10 @@
 import { Outlet, useParams } from "react-router-dom";
 import { Row, Col, Container } from "react-bootstrap"; // Add Container and Row
 import Layout from "../components/layout/Layout";
-import { useFetchData } from "../hooks/useFetch";
 import { Work } from "../../types/Work";
 import WorkCard from "../components/WorkCard";
 
-export default function Works() {
-  const { data } = useFetchData<Work[]>("works?unique=true");
-
+export default function Works({ data }: { data: Work[] | null }) {
   const { slug } = useParams();
 
   if (!data) return null;
@@ -24,8 +21,6 @@ export default function Works() {
                 (item, i) =>
                   item.general.published && (
                     <Col key={i} xs={12} md={6} lg={4}>
-                      {" "}
-                      {/* Adjusted to create a 3-column layout */}
                       <WorkCard work={item} />
                     </Col>
                   )

@@ -20,13 +20,13 @@ const Thumbnail: React.FC<ThumbnailProps> = ({ media }) => {
     // No media case
     return (
       <div
-        className="rounded"
+        className="thumbnail rounded w-100 h-100"
         style={{
           backgroundColor: getRitasColor(),
-          height: "100%",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          minHeight: 200,
         }}
       ></div>
     );

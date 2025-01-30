@@ -3,9 +3,12 @@ import { useFetchData } from "../../hooks/useFetch";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "react-bootstrap-icons";
 import SectionModal from "../SectionModal";
+import Bio from "../../pages/single/Bio";
+import { useEffect } from "react";
 
 export default function BioSec() {
   const { data } = useFetchData<ProfileSchema>("profile/1");
+  useEffect(() => console.log("biosection"), []);
 
   if (!data) return null;
 
@@ -31,7 +34,9 @@ export default function BioSec() {
 
   return (
     <div>
-      <SectionModal />
+      <SectionModal path="#bio">
+        <Bio data={data} />
+      </SectionModal>
       <div id="Statement" className="text-center fs-2">
         <p>{truncatedStatement}</p>
         <Link to={"#bio"} className="fs-4 mt-5">

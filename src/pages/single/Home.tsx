@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Col } from "react-bootstrap";
 import Layout from "../../components/layout/Layout";
 import { GeneralContext } from "../../contexts/GeneralContext";
@@ -12,7 +12,7 @@ import { Alice } from "../../components/Alice/Alice";
 
 export default function Homepage() {
   const { preferences } = useContext(GeneralContext);
-
+  useEffect(() => console.log("home"), []);
   if (!preferences) return null;
 
   return (

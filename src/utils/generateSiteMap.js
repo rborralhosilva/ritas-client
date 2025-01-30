@@ -79,7 +79,7 @@ const generateSitemap = async () => {
   });
 
   // Add dynamic routes for posts
-  postSlugs.forEach((slug) => {
+  workSlugs.forEach((slug) => {
     sitemap += `  <url>\n    <loc>${baseUrl}/${slug}</loc>\n  </url>\n`;
   });
 
@@ -89,7 +89,7 @@ const generateSitemap = async () => {
   });
 
   // Add dynamic routes for works
-  workSlugs.forEach((slug) => {
+  postSlugs.forEach((slug) => {
     sitemap += `  <url>\n    <loc>${baseUrl}/works/${slug}</loc>\n  </url>\n`;
   });
 
@@ -104,7 +104,7 @@ const generateSitemap = async () => {
     path.join(__dirname, "../../", "public", "sitemap.xml"),
     sitemap
   );
-  console.log("Sitemap generated: " + "public/sitemap.xml");
+  console.debug("Sitemap generated: " + "public/sitemap.xml");
 };
 
 // Call the function to generate the sitemap

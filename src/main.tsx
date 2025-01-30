@@ -5,17 +5,14 @@ import App from "./App";
 import Router from "./Router";
 import { BrowserRouter } from "react-router-dom";
 import { GeneralProvider } from "./contexts/providers/GeneralProvider";
-import React from "react";
 
 createRoot(document.getElementById("root")!).render(
   <GeneralProvider>
     {/* Using Rouer this way because of newer react-rouer compatibility issues with Framer Motion */}
     <BrowserRouter basename={import.meta.env.BASE_URL}>
-      <React.StrictMode>
-        <App>
-          <Router />
-        </App>
-      </React.StrictMode>
+      <App>
+        <Router />
+      </App>
     </BrowserRouter>
   </GeneralProvider>
 );

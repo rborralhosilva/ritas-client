@@ -23,7 +23,6 @@ export default function onLoad(modelViewer: ModelViewerElement | null) {
     const { baseColorTexture } = material.pbrMetallicRoughness;
     baseColorTexture.setTexture(videoTexture);
 
-    console.log(baseColorTexture);
     // material.setEmissiveFactor(1);
     // material.setEmissiveStrength(1);
   });
