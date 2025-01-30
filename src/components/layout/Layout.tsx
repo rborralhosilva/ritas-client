@@ -35,8 +35,8 @@ export default function Layout({
         <meta name="description" content={metadata.description} />
         <meta name="author" content={metadata.name} />
       </Helmet>
-      <Fade>
-        <>
+      <Fade in={true} appear={true}>
+        <div>
           {/* Header */}
           {title && (
             <Row
@@ -63,7 +63,7 @@ export default function Layout({
               <Row>{footer}</Row>
             </Col>
           )}
-        </>
+        </div>
       </Fade>
     </>
   );

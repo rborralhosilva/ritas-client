@@ -27,7 +27,7 @@ export default function Header({
   }, [setHeaderHeight, isMobile]);
 
   return (
-    <header ref={headerRef}>
+    <header>
       {/* metadata */}
       <Helmet>
         <title>{preferences?.artists_name || "Rita  Borralho Silva"}</title>
@@ -69,7 +69,7 @@ export default function Header({
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </Helmet>
       {/* navbar */}
-      <div className="m-3 position-fixed start-0 top-0 z-3">
+      <div className="m-3 position-fixed start-0 top-0 z-3" ref={headerRef}>
         <Row>
           <Col>
             <Link

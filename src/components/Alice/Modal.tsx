@@ -28,7 +28,6 @@ export default function VideoWindow({
         size="xl"
         centered
         contentClassName={"bg-transparent border-0"}
-        className="d-flex justify-content-center"
       >
         <Button
           className="position-fixed top-0 end-0 z-3 m-3 px-1 py-0"
@@ -39,7 +38,7 @@ export default function VideoWindow({
           <i className="bi bi-x fs-1 p-0 lh-sm" />
         </Button>
 
-        <Modal.Body>
+        <Modal.Body className="w-100">
           {!ready && (
             <p className="position-absolute top-50 start-50 translate-middle text-light">
               Loading...
@@ -49,6 +48,7 @@ export default function VideoWindow({
             url={"https://vimeo.com/75845109"}
             controls
             onReady={() => setReady(true)}
+            width={"100%"}
           />
         </Modal.Body>
       </Modal>

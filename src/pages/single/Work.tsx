@@ -57,7 +57,7 @@ export default function Work() {
             <Row className="gap-3 w-100 justify-content-center">
               {media && media.length > 0 ? (
                 media.map((item) => (
-                  <Col xs={12} key={item?.etag}>
+                  <Col xs={12} key={item?.etag} className="p-0">
                     <MediaComponent media={item} />
                   </Col>
                 ))

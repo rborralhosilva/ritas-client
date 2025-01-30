@@ -26,15 +26,16 @@ export default function SectionModal({
   };
 
   return (
-    <>
-      <Modal
-        show={!!hash}
-        size="xl"
-        onHide={handleClose}
-        contentClassName="shadow-sm"
-      >
+    <Modal
+      show={!!hash}
+      size="xl"
+      onHide={handleClose}
+      contentClassName="shadow-sm"
+      animation={false}
+    >
+      <Modal.Header className="d-flex justify-content-end p-0 m-0 border-0">
         <Button
-          className="position-absolute top-0 end-0 z-3 m-3 px-1 py-0 "
+          className="m-2 px-1 py-0 "
           aria-label="Close"
           onClick={handleClose}
           variant="rita-dark"
@@ -42,8 +43,8 @@ export default function SectionModal({
         >
           <i className="bi bi-x fs-1 p-0 lh-sm" />
         </Button>
-        <Modal.Body>{children}</Modal.Body>
-      </Modal>
-    </>
+      </Modal.Header>
+      <Modal.Body className="mt-0 pt-0">{children}</Modal.Body>
+    </Modal>
   );
 }
