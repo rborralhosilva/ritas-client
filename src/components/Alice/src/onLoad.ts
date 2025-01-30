@@ -23,7 +23,18 @@ export default function onLoad(modelViewer: ModelViewerElement | null) {
     const { baseColorTexture } = material.pbrMetallicRoughness;
     baseColorTexture.setTexture(videoTexture);
 
-    // material.setEmissiveFactor(1);
-    // material.setEmissiveStrength(1);
+    // Check scroll position on load and scroll events
+    const updateBlur = () => {
+      const modelElement = document.getElementById("model");
+      if (modelElement) {
+        if (window.scrollY > 0) {
+          modelElement.classList.add("blur");
+        } else {
+          modelElement.classList.remove("blur");
+        }
+      }
+    };
+
+    updateBlur(); // Check on load
   });
 }

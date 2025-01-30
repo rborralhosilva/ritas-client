@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player/lazy";
 import { VideoRefSchema } from "@jakubkanna/labguy-front-schema";
 
@@ -22,7 +22,10 @@ export default function Video({
   };
 }) {
   const videoUrl = getVideoUrl(videoref);
+  const [ready, setReady] = useState(false);
+
   const { playing, muted, controls, light } = playerProps;
+  useEffect(() => console.log(videoUrl), [videoUrl]);
 
   if (!videoUrl) return null;
 
@@ -44,17 +47,23 @@ export default function Video({
 
   return (
     <div style={playerWrapperStyle}>
-      <ReactPlayer
-        url={videoUrl}
-        width={"100%"}
-        height={"100%"}
-        style={playerStyle}
-        playing={playing}
-        muted={muted}
-        controls={controls}
-        light={light}
-        playIcon={<></>}
-      />
+      {!ready && (
+        <p className="position-absolute top-50 start-50 translate-middle text-dark">
+          Loading...
+        </p>
+      )}
+      <div style={playerStyle}>
+        <ReactPlayer
+          url={videoUrl} // Use dynamic video URL
+          playing={playing}
+          muted={muted}
+          controls={controls}
+          light={light}
+          onReady={() => setReady(true)}
+          width="100%"
+          height="100%"
+        />
+      </div>
     </div>
   );
 }

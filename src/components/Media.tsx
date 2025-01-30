@@ -10,16 +10,20 @@ interface MediaProps {
 
 export default function MediaComponent({ media, className }: MediaProps) {
   // Early return if no media is provided
-  if (!media || media.length === 0) return;
+  if (!media) return null;
 
-  switch (true) {
-    case isImage(media):
-      return <Image imageref={media} className={className} />;
-    case isVideo(media):
-      return <Video videoref={media} />;
-    case is3d(media):
-      return <Model threedref={media} controls />;
-    default:
-      return <p>Unsupported media type.</p>;
-  }
+  return (
+    <div className={className}>
+      {isImage(media) && <Image imageref={media} className={className} />}
+      {isVideo(media) && <Video videoref={media} />}
+      {is3d(media) && <Model threedref={media} controls />}
+      {!isImage(media) && !isVideo(media) && !is3d(media) && (
+        <p>Unsupported media type.</p>
+      )}
+
+      {(media.description as string) && (
+        <span className="media-description">{media.description as string}</span>
+      )}
+    </div>
+  );
 }

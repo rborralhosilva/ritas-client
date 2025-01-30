@@ -55,13 +55,13 @@ export default function Menu() {
           <Link to="/">Home</Link>
         </ListGroupItem>
         <ListGroupItem active={activeSection === "bio"}>
-          <Link to="bio">Bio</Link>
+          <Link to="#bio">Bio</Link>
         </ListGroupItem>
         <ListGroupItem active={activeSection === "works"}>
-          <Link to="works">Works</Link>
+          <Link to="#works">Works</Link>
         </ListGroupItem>
         <ListGroupItem active={activeSection === "contact"}>
-          <Link to="contact">Contact</Link>
+          <Link to="#contact">Contact</Link>
         </ListGroupItem>
       </ListGroup>
     </div>
