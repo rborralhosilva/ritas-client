@@ -71,7 +71,7 @@ export default function Menu() {
   );
 
   const menuItems: MenuItem[] = [
-    { to: "/", label: "Home", id: "home" },
+    { to: "/#home", label: "Home", id: "home" },
     { to: "/#bio", label: "Bio", id: "bio" },
     { to: "/#works", label: "Works", id: "works" },
     { to: "/#contact", label: "Contact", id: "contact" },
