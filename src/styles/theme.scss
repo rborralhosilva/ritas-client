@@ -12,6 +12,9 @@ body {
   min-height: 100%;
   position: relative;
 }
+html {
+  scroll-behavior: smooth;
+}
 #root {
   min-height: 100%;
   position: relative;
@@ -28,4 +31,3 @@ a {
 @import "./btn.scss";
 @import "./home.scss";
 @import "./list-group.scss";
-@import "./work-card.scss";

@@ -1,6 +1,7 @@
-import { Button, Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import CloseButton from "./CloseButton";
 
 export default function SectionModal({
   children,
@@ -34,15 +35,11 @@ export default function SectionModal({
       animation={false}
     >
       <Modal.Header className="d-flex justify-content-end p-0 m-0 border-0">
-        <Button
-          className="m-2 px-1 py-0 "
-          aria-label="Close"
-          onClick={handleClose}
+        <CloseButton
+          handleClose={handleClose}
           variant="rita-dark"
-          hidden={!hash}
-        >
-          <i className="bi bi-x fs-1 p-0 lh-sm" />
-        </Button>
+          className="m-2 px-1 py-0"
+        />
       </Modal.Header>
       <Modal.Body className="mt-0 pt-0">{children}</Modal.Body>
     </Modal>

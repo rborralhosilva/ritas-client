@@ -4,7 +4,7 @@ import Layout from "../../components/layout/Layout";
 import { GeneralContext } from "../../contexts/GeneralContext";
 import Section from "../../components/sections/Section";
 import WorksSecContent from "../../components/sections/Works.section";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ArrowUpRight } from "react-bootstrap-icons";
 import ContactSec from "../../components/sections/Contact.section";
 import BioSec from "../../components/sections/Bio.section";
@@ -12,9 +12,19 @@ import { Alice } from "../../components/Alice/Alice";
 
 export default function Homepage() {
   const { preferences } = useContext(GeneralContext);
-  useEffect(() => console.log("home"), []);
-  if (!preferences) return null;
+  const location = useLocation();
 
+  useEffect(() => {
+    // Scroll to the element with the ID from the fragment identifier
+    if (location.hash) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location.hash]);
+
+  if (!preferences) return null;
   return (
     <Layout>
       <Col>

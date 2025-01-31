@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import ReactPlayer from "react-player/lazy";
 import styled, { keyframes } from "styled-components";
+import CloseButton from "../CloseButton";
 
 export default function VideoWindow({
   show,
@@ -29,14 +30,11 @@ export default function VideoWindow({
         centered
         contentClassName={"bg-transparent border-0"}
       >
-        <Button
-          className="position-fixed top-0 end-0 z-3 m-3 px-1 py-0"
-          aria-label="Close"
-          onClick={handleClose}
+        <CloseButton
+          handleClose={handleClose}
           variant="rita"
-        >
-          <i className="bi bi-x fs-1 p-0 lh-sm" />
-        </Button>
+          className="position-fixed top-0 end-0 z-3 m-3 px-1 py-0"
+        />
 
         <Modal.Body className="w-100">
           {!ready && (
