@@ -24,16 +24,16 @@ export default function Bio({ data }: { data: ProfileSchema }) {
 
   return (
     <Layout title="Bio" description={statement || undefined}>
-      <div id="Statement">
-        <h2>Statement</h2>
+      <div id="Statement" className="text-center">
+        {/* <h2>Statement</h2> */}
         <div>{statement && HTMLReactParser(statement)}</div>
       </div>
-      <div id="Additional">
-        <h2>Additional</h2>
+      <div id="Additional" className="text-center pt-3">
+        {/* <h2>Additional</h2> */}
         {arrayToHtml(additional)}
       </div>
       {preferences?.enable_portfolio_pdf && (
-        <div id="Portfolio">
+        <div id="Portfolio" className="text-center">
           <h2>Portfolio</h2>
           <PortfolioButton url={data.portfolio_pdf_url} />
         </div>

@@ -7,9 +7,9 @@ dotenv.config();
 // Static routes (no dynamic slugs)
 const staticRoutes = [
   "/",
-  "/bio",
-  "/contact",
-  "/works",
+  "/#bio",
+  "/#contact",
+  "/#works",
   // "/calendar",
   // "/projects",
 ];

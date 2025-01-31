@@ -1,3 +1,4 @@
+import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 const PortfolioButton = ({ url }: { url?: string | null }) => {
@@ -9,14 +10,14 @@ const PortfolioButton = ({ url }: { url?: string | null }) => {
       window.open(url, "_blank");
     } else {
       // If no PDF is available, navigate to the contact tab
-      navigate("/contact");
+      navigate("/#contact");
     }
   }
 
   return (
-    <span className="link" onClick={handleClick}>
-      {url ? "Download (PDF)" : "Request PDF"}
-    </span>
+    <Button className="link" onClick={handleClick} variant="labguy">
+      {url ? "Download" : "Request"}
+    </Button>
   );
 };
 
