@@ -16,7 +16,7 @@ interface ThumbnailProps {
 }
 
 const Thumbnail: React.FC<ThumbnailProps> = ({ media }) => {
-  if (!media || media.length === 0) {
+  if (!media || media.length === 0 || isVideo(media[0])) {
     // No media case
     return (
       <div

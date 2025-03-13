@@ -79,7 +79,7 @@ const WorkCard: React.FC<CardProps> = ({ work }) => {
       <Row>
         <Col className="d-flex flex-column align-items-center justify-content-center">
           <p className="fw-bold">{title}</p>
-          {dimensions && (
+          {
             <p className="text-center">
               {year && (
                 <>
@@ -94,10 +94,10 @@ const WorkCard: React.FC<CardProps> = ({ work }) => {
                 </>
               )}
               {dimensions && (
-                <span style={{ fontSize: "0.8em" }}>{dimensions} cm</span>
+                <span style={{ fontSize: "0.8em" }}>{dimensions}</span>
               )}
             </p>
-          )}
+          }
         </Col>
       </Row>
     </div>

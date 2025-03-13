@@ -6,6 +6,7 @@ import { Work as WorkSchema } from "../../../types/Work";
 import MediaComponent from "../../components/Media";
 import Layout from "../../components/layout/Layout";
 import NotFoundPage from "../404";
+import HTMLReactParser from "html-react-parser/lib/index";
 
 export default function Work() {
   const { slug } = useParams();
@@ -13,7 +14,7 @@ export default function Work() {
 
   if (!data) return <NotFoundPage />;
 
-  const { general, dimensions, medium, year, media, urls } = data;
+  const { general, dimensions, medium, year, media, urls, description } = data;
 
   if (!general.published) return "This page is private.";
 
@@ -26,7 +27,7 @@ export default function Work() {
             <Row className="w-100">
               <Col xs={12}>
                 <p id="Details">
-                  {dimensions && <span>{dimensions} (cm), </span>}
+                  {dimensions && <span>{dimensions}, </span>}
                   {medium && <span>{medium}, </span>}
                   {year && <span>{year}</span>}
                   {urls && (
@@ -47,11 +48,13 @@ export default function Work() {
             </Row>
           </div>
           {/* Text */}
-          <Row>
-            <Col>
-              <p id="description">{data.description}</p>
-            </Col>
-          </Row>
+          {description && (
+            <Row>
+              <Col>
+                <p id="description">{HTMLReactParser(description)}</p>
+              </Col>
+            </Row>
+          )}
           {/* Display Images */}
           <div className="w-100 d-flex flex-column align-items-center">
             <Row className="gap-3 w-100 justify-content-center">
