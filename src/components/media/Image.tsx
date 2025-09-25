@@ -40,7 +40,6 @@ const ImageComp = ({ imageref, className }: ImageProps) => {
         style={{ height: 600 }}
       >
         {/* Fallback content when the image is invalid */}
-        <p>Image failed to load</p>
       </div>
     );
   }

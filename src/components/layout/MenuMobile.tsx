@@ -38,10 +38,10 @@ export default function MenuMobile({
           <CloseButton handleClose={handleClose} />
         </Modal.Header>
         <Modal.Body
-          className="d-grid gap-2 p-4"
+          className="d-grid gap-2"
           style={{
             gridTemplateColumns: "repeat(2, 1fr)",
-            gridTemplateRows: "repeat(2, 1fr)",
+            gridTemplateRows: "1fr 2fr auto",
             height: "calc(100vh - 60px)",
           }}
         >
@@ -50,7 +50,7 @@ export default function MenuMobile({
               key={item.id}
               to={item.to}
               style={
-                index === 0 && items.length % 2 !== 0
+                index === 2 && items.length % 2 !== 0
                   ? { gridColumn: "1 / span 2" }
                   : {}
               }

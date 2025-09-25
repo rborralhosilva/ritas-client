@@ -25,3 +25,10 @@ section {
 .modal-backdrop {
   background-color: white;
 }
+
+.home-logo {
+  width: 10vw;
+  @media (max-width: 768px) {
+    width: 20vw !important;
+  }
+}

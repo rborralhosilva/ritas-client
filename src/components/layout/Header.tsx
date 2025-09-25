@@ -30,8 +30,8 @@ export default function Header({
     <header>
       {/* metadata */}
       <Helmet>
-        <title>{preferences?.artists_name || "Rita  Borralho Silva"}</title>
-        <meta name="author" content={preferences?.artists_name} />
+        <title>{artists_name || "Rita  Borralho Silva"}</title>
+        <meta name="author" content={artists_name} />
 
         {/* Favicons and Icons for Different Platforms */}
         <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
@@ -72,12 +72,11 @@ export default function Header({
       <div className="m-3 position-fixed start-0 top-0 z-3" ref={headerRef}>
         <Row>
           <Col>
-            <Link
-              to="/"
-              className="fs-3 fw-bolder text-wrap d-block"
-              style={{ width: 100, lineHeight: 1 }}
-            >
-              {artists_name}
+            <Link to="/" className="fs-3 fw-bolder text-wrap d-block">
+              <img
+                src=".\ritaborralhosilvatypeface.png"
+                className="home-logo"
+              ></img>
             </Link>
           </Col>
         </Row>
