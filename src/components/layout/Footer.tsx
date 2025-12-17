@@ -41,25 +41,12 @@ export default function Footer({
               <small>
                 © {currentYear} {artists_name}
               </small>
-            
+              {" | "}
               <small>
                 Design &amp; Development{" "}
-                <a
-                  href="https://studio.jakubkanna.com"
-                  target="_blank"
-                  className="text-decoration-underline px-1 rounded-pill"
-                  style={{
-                    transition: "background-color .15s ease-in-out",
-                  }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.backgroundColor = "rgb(238,255,135)")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.backgroundColor = "transparent")
-                  }
-                >
+          
                   JAKUB KANNA
-                </a>
+               
               </small>
           </Col>
         </Row>
