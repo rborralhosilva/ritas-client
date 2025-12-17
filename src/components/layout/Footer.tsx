@@ -38,16 +38,7 @@ export default function Footer({
         </Row>
         <Row>
             <Col className="d-flex align-items-center justify-content-center">
-              <small>
-                © {currentYear} {artists_name}
-              </small>
-              {" | "}
-              <small>
-                Design &amp; Development{" "}
-          
-                  JAKUB KANNA
-               
-              </small>
+              <small>© 2025 Rita Borralho Silva</small>&nbsp;<small>x</small>&nbsp;<small>Design &amp; Development JAKUB KANNA</small>
           </Col>
         </Row>
       </Col>
