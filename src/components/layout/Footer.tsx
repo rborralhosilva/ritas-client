@@ -37,7 +37,7 @@ export default function Footer({
           </Col>
         </Row>
         <Row>
-            <Col className="d-flex align-items-center justify-content-center">
+            <Col className="d-flex align-items-center justify-content-center text-center">
               <small>© 2025 Rita Borralho Silva</small>&nbsp;<small>x</small>&nbsp;<small>Design &amp; Development JAKUB KANNA</small>
           </Col>
         </Row>
