@@ -9,7 +9,6 @@ export default function Footer({
   setFooterHeight: React.Dispatch<React.SetStateAction<number>>;
 }) {
   const { preferences } = useContext(GeneralContext);
-  const artists_name = preferences ? preferences.artists_name : "";
   const currentYear = new Date().getFullYear();
   const footerRef = useRef<HTMLDivElement | null>(null);
   const isMobile = useIsMobile();
@@ -38,7 +37,7 @@ export default function Footer({
         </Row>
         <Row>
             <Col className="d-flex align-items-center justify-content-center text-center">
-              <small>© 2025 Rita Borralho Silva</small>&nbsp;<small>x</small>&nbsp;<small>Design &amp; Development JAKUB KANNA</small>
+              <small>© {currentYear} Rita Borralho Silva</small>&nbsp;<small>x</small>&nbsp;<small>Design &amp; Development JAKUB KANNA</small>
           </Col>
         </Row>
       </Col>
