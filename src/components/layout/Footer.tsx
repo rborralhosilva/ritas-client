@@ -1,6 +1,5 @@
-import { useContext, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Col, Row } from "react-bootstrap";
-import { GeneralContext } from "../../contexts/GeneralContext";
 import useIsMobile from "../../hooks/useIsMobile";
 
 export default function Footer({
