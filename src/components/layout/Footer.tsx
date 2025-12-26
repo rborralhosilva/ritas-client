@@ -8,7 +8,6 @@ export default function Footer({
 }: {
   setFooterHeight: React.Dispatch<React.SetStateAction<number>>;
 }) {
-  const { preferences } = useContext(GeneralContext);
   const currentYear = new Date().getFullYear();
   const footerRef = useRef<HTMLDivElement | null>(null);
   const isMobile = useIsMobile();
