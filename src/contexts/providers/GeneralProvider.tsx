@@ -1,6 +1,7 @@
 import { ReactNode, useState, useMemo, useEffect } from "react";
 import LoadingPage from "../../pages/Loading";
 import { GeneralContext, Preferences } from "../GeneralContext";
+import { SITE_OWNER_NAME, STATIC_PREFERENCES } from "../../config/staticSite";
 
 interface GeneralProviderProps {
   children: ReactNode;
@@ -11,13 +12,23 @@ export const GeneralProvider: React.FC<GeneralProviderProps> = ({
 }) => {
   const [preferences, setPreferences] = useState<Preferences | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const [apiConnected, setApiConnected] = useState<boolean>(false);
   const [status, setStatus] = useState<number | null>(null);
-  const [error, setError] = useState<string | null>(null);
 
   const fetchPreferences = useMemo(() => {
     const fetchPreferencesFromServer = async () => {
       const endpoint = "/preferences";
-      const apiUrl = import.meta.env.VITE_SERVER_API_URL + endpoint;
+      const baseApiUrl = import.meta.env.VITE_SERVER_API_URL;
+
+      if (!baseApiUrl) {
+        setPreferences(STATIC_PREFERENCES);
+        setApiConnected(false);
+        setStatus(null);
+        setLoading(false);
+        return;
+      }
+
+      const apiUrl = `${baseApiUrl}${endpoint}`;
 
       try {
         const response = await fetch(apiUrl);
@@ -25,23 +36,35 @@ export const GeneralProvider: React.FC<GeneralProviderProps> = ({
         if (!response.ok) {
           if (response.status === 429) {
             setStatus(429);
-            setError(null); // Clear previous errors
           } else {
             throw new Error(
               `Error fetching preferences: ${response.statusText}`
             );
           }
         } else {
+          const contentType = response.headers.get("content-type");
+          if (!contentType?.includes("application/json")) {
+            throw new Error("Preferences response was not JSON.");
+          }
+
           const data = await response.json();
-          setPreferences(data);
-          setStatus(null); // Clear any previous error status
+          setPreferences({
+            ...data,
+            artists_name: SITE_OWNER_NAME,
+          });
+          setApiConnected(true);
+          setStatus(null);
         }
       } catch (error: unknown) {
-        // If an error occurs, display an appropriate message
-        console.error(error);
-        setError((error as Error).message || "An unexpected error occurred.");
+        console.warn(
+          "Using static site data because the API is unavailable.",
+          error
+        );
+        setPreferences(STATIC_PREFERENCES);
+        setApiConnected(false);
+        setStatus(null);
       } finally {
-        setLoading(false); // Set loading to false after trying to fetch
+        setLoading(false);
       }
     };
 
@@ -54,7 +77,13 @@ export const GeneralProvider: React.FC<GeneralProviderProps> = ({
 
   return (
     <GeneralContext.Provider
-      value={{ preferences, setPreferences, loading, setLoading }}
+      value={{
+        preferences,
+        setPreferences,
+        loading,
+        setLoading,
+        apiConnected,
+      }}
     >
       {loading ? (
         <LoadingPage />
@@ -62,8 +91,6 @@ export const GeneralProvider: React.FC<GeneralProviderProps> = ({
         <p className="font-monospace">
           You have been timed-out. Please try again later.
         </p>
-      ) : error ? (
-        <p className="font-monospace">Error: {error}</p>
       ) : (
         children
       )}

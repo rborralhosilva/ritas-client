@@ -16,7 +16,7 @@ export default function Menu() {
   const [activeSection, setActiveSection] = useState<string>("");
   const location = useLocation();
   const isMobile = useIsMobile();
-  const { preferences } = useContext(GeneralContext);
+  const { preferences, apiConnected } = useContext(GeneralContext);
 
   useEffect(() => {
     const options = {
@@ -59,7 +59,7 @@ export default function Menu() {
 
   if (!preferences) return;
 
-  const { homepage_urls } = preferences;
+  const { homepage_urls = [] } = preferences;
 
   const dynamicItems: MenuItem[] = (homepage_urls as UrlSchema[]).map(
     (url) => ({
@@ -70,13 +70,17 @@ export default function Menu() {
     })
   );
 
-  const menuItems: MenuItem[] = [
-    { to: "/#home", label: "Home", id: "home" },
-    { to: "/#bio", label: "Bio", id: "bio" },
-    { to: "/#works", label: "Works", id: "works" },
-    { to: "/#contact", label: "Contact", id: "contact" },
-    ...dynamicItems,
-  ];
+  const menuItems: MenuItem[] = apiConnected
+    ? [
+        { to: "/#home", label: "Home", id: "home" },
+        { to: "/#bio", label: "Bio", id: "bio" },
+        { to: "/#works", label: "Works", id: "works" },
+        { to: "/#contact", label: "Contact", id: "contact" },
+        ...dynamicItems,
+      ]
+    : [{ to: "/#home", label: "Home", id: "home" }];
+
+  if (menuItems.length <= 1) return null;
 
   return isMobile ? (
     <MenuMobile activeSection={activeSection} items={menuItems} />

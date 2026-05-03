@@ -5,6 +5,7 @@ import useIsMobile from "../../hooks/useIsMobile";
 import { Col, Row } from "react-bootstrap";
 import Menu from "./Menu";
 import { Link } from "react-router-dom";
+import { SITE_OWNER_NAME } from "../../config/staticSite";
 
 export default function Header({
   setHeaderHeight,
@@ -12,9 +13,7 @@ export default function Header({
   setHeaderHeight: React.Dispatch<React.SetStateAction<number>>;
 }) {
   const { preferences } = useContext(GeneralContext);
-  const artists_name = preferences
-    ? preferences.artists_name
-    : "Rita Borralho Silva";
+  const artists_name = preferences?.artists_name || SITE_OWNER_NAME;
   const headerRef = useRef<HTMLDivElement | null>(null);
   const isMobile = useIsMobile();
 
@@ -30,7 +29,7 @@ export default function Header({
     <header>
       {/* metadata */}
       <Helmet>
-        <title>{artists_name || "Rita  Borralho Silva"}</title>
+        <title>{artists_name}</title>
         <meta name="author" content={artists_name} />
 
         {/* Favicons and Icons for Different Platforms */}

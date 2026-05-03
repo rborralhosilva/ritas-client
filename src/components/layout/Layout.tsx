@@ -4,6 +4,7 @@ import { GeneralContext } from "../../contexts/GeneralContext";
 import { Helmet } from "react-helmet";
 
 import { ProfileSchema } from "@jakubkanna/labguy-front-schema";
+import { SITE_OWNER_NAME } from "../../config/staticSite";
 
 export default function Layout({
   children,
@@ -20,11 +21,12 @@ export default function Layout({
   header?: ReactNode;
 }) {
   const { preferences } = useContext(GeneralContext);
+  const artistsName = preferences?.artists_name || SITE_OWNER_NAME;
 
   const metadata = {
-    title: title || preferences?.artists_name || "Untitled",
+    title: title || artistsName,
     description: description,
-    name: preferences?.artists_name,
+    name: artistsName,
   };
 
   return (

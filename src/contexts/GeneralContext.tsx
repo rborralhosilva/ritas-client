@@ -12,6 +12,7 @@ interface GeneralContextType {
   setPreferences: React.Dispatch<React.SetStateAction<Preferences | null>>;
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  apiConnected: boolean;
 }
 
 export const GeneralContext = createContext<GeneralContextType>({
@@ -19,4 +20,5 @@ export const GeneralContext = createContext<GeneralContextType>({
   setPreferences: () => {},
   loading: true,
   setLoading: () => {},
+  apiConnected: false,
 });
