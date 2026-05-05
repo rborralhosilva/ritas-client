@@ -80,7 +80,9 @@ export default function Menu() {
       ]
     : [{ to: "/#home", label: "Home", id: "home" }];
 
-  if (menuItems.length <= 1) return null;
+  const hasSectionsBeyondHome = menuItems.some((item) => item.id !== "home");
+
+  if (!hasSectionsBeyondHome) return null;
 
   return isMobile ? (
     <MenuMobile activeSection={activeSection} items={menuItems} />
